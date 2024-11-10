@@ -1,0 +1,46 @@
+<div class="container text-center mt-3 m-plus-rounded-1c-regular" dir="rtl">
+    <app-weather-form (citySearched)="onCitySearched($event)"></app-weather-form>
+
+    <div class="weather-container d-flex justify-content-between" *ngIf="weatherData">
+        <div class="current-weather text-right">
+            <h4 class="display-4">מזג האוויר ב{{ weatherData?.name || 'City' }}</h4>
+            <img class="weather_description_img" *ngIf="weatherData" src="http://openweathermap.org/img/w/{{ weatherData.weather[0].icon }}.png" alt="weather icon" width="150">
+            <div *ngIf="weatherData">
+                <h3>{{ weatherData.weather[0].description | titlecase }}</h3>
+                <h3>{{ weatherData.main.temp }}°C</h3>
+                <h3>רוח {{ weatherData.wind.speed }} קמ"ש</h3>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="Irrigation_Recommendation text-left">
+            <h4 class="display-4">המלצת השקייה:</h4>
+            <ng-container *ngIf="weatherData">
+                <ng-container *ngIf="isRainyWeather(weatherData.weather[0].description)">
+                    <img class="no_irrigation_img" *ngIf="weatherData" src="assets/no irrigation today.png" alt="no irrigation" width="150">
+                </ng-container>
+                <ng-container *ngIf="!isRainyWeather(weatherData.weather[0].description)">
+                    <img class="irrigate_normal_img" *ngIf="weatherData" src="assets/time to irrigate.jpg" alt="irrigate normal" width="150">
+                </ng-container>
+            </ng-container>
+
+            <h3>
+                <ng-container *ngIf="weatherData">
+                    <ng-container *ngIf="isRainyWeather(weatherData.weather[0].description)">
+                        אין צורך להשקות היום!
+                    </ng-container>
+                    <ng-container *ngIf="!isRainyWeather(weatherData.weather[0].description)">
+                        השקה כרגיל!
+                    </ng-container>
+                </ng-container>
+            </h3>
+        </div>
+    </div>
+
+    <div *ngIf="!weatherData">
+        <h1>אין נתוני מזג האוויר להצגה.</h1>
+        <p>בדוק את החיבור שלך לרשת</p>
+    </div>
+
+    

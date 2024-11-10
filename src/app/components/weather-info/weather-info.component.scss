@@ -1,0 +1,71 @@
+.m-plus-rounded-1c-regular {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+
+
+.weather-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between; /* יישור התוכן מצדדים שונים */
+    align-items: flex-start; /* יישור התוכן לקצה העליון */
+}
+
+.current-weather {
+    flex: 1; /* תופס מקום שווה בצד ימין */
+    margin-left: 10px; /* מרווח בין שני הקונטיינרים */
+}
+
+.Irrigation_Recommendation {
+    flex: 1; /* תופס מקום שווה בצד שמאל */
+    margin-right: 10px; /* מרווח בין שני הקונטיינרים */
+}
+
+
+/* קו מפריד */
+.separator {
+    width: 1px; /* רוחב הקו */
+    background-color: black; /* צבע הקו */
+    flex-shrink: 0; /* מונע מהקו להתכווץ */
+    height: auto; /* גובה הקו יתממשך בהתאם לגובה הקומפוננטות */
+    align-self: stretch; /* מקנה לקו להתממש לגובה המיכל */
+  }
+
+  .weather_description_img{
+    margin: 15px;
+  }
+
+  .no_irrigation_img {
+    margin: 15px;
+  }
+
+  .irrigate_normal_img {
+    margin: 15px;
+  }
+
+
+  /* סגנונות לריספונסיביות */
+@media (max-width: 768px) { /* במצב של מסך טלפון */
+    .weather-container {
+        flex-direction: column; /* סידור התוכן בטור */
+        align-items: center; /* מרכז את התוכן */
+    }
+
+    .current-weather,
+    .Irrigation_Recommendation {
+        margin-left: 0; /* ביטול מרווחים בצדדים */
+        margin-right: 0; /* ביטול מרווחים בצדדים */
+        width: 100%; /* תופס את כל רוחב המיכל */
+        text-align: center; /* טקסט ממורכז */
+    }
+
+    .separator {
+        width: 100%; /* קו המפריד יהפוך לאופקי */
+        height: 1px; /* רוחב הקו */
+        margin: 20px 0; /* מרווחים למעלה ולמטה */
+    }
+
+}
